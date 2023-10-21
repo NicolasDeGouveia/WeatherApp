@@ -1,4 +1,3 @@
-// components/CurrentWeatherComponent.tsx
 import { IconKey } from "@/types/iconKey";
 import { CurrentWeatherData } from "../../types/weather";
 import { iconMap } from "@/utils/iconMap";
@@ -34,9 +33,9 @@ export const CurrentWeatherComponent: React.FC<Props> = ({ data }) => {
         <CityName>{data.name}</CityName>
         <WeatherDate>{data.dt_txt}</WeatherDate>
         <Separator />
-        <Temperature>{data.temperature}°C</Temperature>
+        <Temperature>{Math.round(data.temperature)}°C</Temperature>
         <TemperatureMinMax>
-          {data.tempMax} / {data.tempMin} °C
+          {Math.round(data.tempMax)} / {Math.round(data.tempMin)} °C
         </TemperatureMinMax>
 
         <IconAndDescriptionWrapper>

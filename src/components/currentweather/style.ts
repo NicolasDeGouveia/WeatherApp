@@ -10,7 +10,7 @@ export const CurrentRight = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 0 0;
 
   @media (max-width: 768px) {
     display: none;
@@ -24,7 +24,7 @@ export const CurrentWrapperInfo = styled.div`
   background: linear-gradient(140deg, #007bff, #56a3f7);
   color: white;
   padding: 20px;
-  border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 0;
 
   @media (max-width: 768px) {
     align-items: center;

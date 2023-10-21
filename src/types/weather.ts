@@ -1,5 +1,3 @@
-// weather.ts
-
 // Data structure for Current Weather
 export interface CurrentWeatherData {
   name: string;
