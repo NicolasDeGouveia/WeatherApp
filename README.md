@@ -12,9 +12,8 @@ Avant de commencer, assurez-vous d'avoir les prérequis suivants installés sur 
 
 ## Commencer
 
-> **Note**
+> [!IMPORTANT]  
 > Assure-vous d'avoir un compte OpenWeatherMap afin de récupérer votre clé API.
-
 
 
 Suivez ces étapes pour installer et exécuter le projet sur votre machine locale :
