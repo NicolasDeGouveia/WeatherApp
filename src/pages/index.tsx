@@ -2,13 +2,14 @@ import { QueryClient, dehydrate, useQuery } from "react-query";
 
 import { CurrentWeatherData, ForecastWeatherData } from "@/types/weather";
 import { CurrentWeatherComponent } from "@/components/currentweather/CurrentWeather";
-import styled from "styled-components";
 import { ExtendedForecastComponent } from "@/components/extendedforecast/ExtendedForecast";
 import { fetchCurrentWeather } from "@/utils/functions/currentWeather/fetchCurrentWeather ";
 import { fetchForecastWeather } from "@/utils/functions/forecastWeather/fetchForecastWeather";
 
+import { Wrapper } from "./style";
+
 const WeatherPage = () => {
-  const { data: currentWeatherData, isError } = useQuery<CurrentWeatherData>(
+  const { data: currentWeatherData } = useQuery<CurrentWeatherData>(
     "currentWeather",
     () => fetchCurrentWeather("Paris")
   );
@@ -27,11 +28,6 @@ const WeatherPage = () => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  max-width: 77.5rem;
-  margin: auto;
-`;
 
 export const getServerSideProps = async () => {
   const queryClient = new QueryClient();

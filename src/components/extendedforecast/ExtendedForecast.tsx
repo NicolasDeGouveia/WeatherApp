@@ -36,6 +36,9 @@ const DayForecast = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-basis: calc(20% - 5px);
+  flex-grow: 1;
+  flex-shrink: 0;
   &:last-child {
     margin-right: 0;
   }
@@ -62,24 +65,25 @@ const Description = styled.div`
   text-transform: capitalize;
   font-weight: 500;
   font-size: 16px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const ForecastWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
-  align-items: center;
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
 
-  @media (max-width: 768px) {
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-
-    grid-template-columns: repeat(1, 1fr);
-
-    @media (min-width: 769px) {
-      overflow-x: visible;
-      white-space: normal;
-    }
+  @media (min-width: 769px) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    align-items: center;
+    overflow-x: visible;
+    white-space: normal;
   }
 `;
