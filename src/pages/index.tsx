@@ -6,7 +6,7 @@ import { ExtendedForecastComponent } from "@/components/extendedforecast/Extende
 import { fetchCurrentWeather } from "@/utils/functions/currentWeather/fetchCurrentWeather ";
 import { fetchForecastWeather } from "@/utils/functions/forecastWeather/fetchForecastWeather";
 
-import { Wrapper } from "./style";
+import { Wrapper } from "../styles/style";
 
 const WeatherPage = () => {
   const { data: currentWeatherData } = useQuery<CurrentWeatherData>(
