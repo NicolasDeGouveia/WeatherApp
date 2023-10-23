@@ -1,35 +1,57 @@
-import { useQuery } from "react-query";
-import { fetchCurrentWeather, fetchForecastWeather } from "./api/weather";
+import { QueryClient, dehydrate, useQuery } from "react-query";
+
 import { CurrentWeatherData, ForecastWeatherData } from "@/types/weather";
 import { CurrentWeatherComponent } from "@/components/currentweather/CurrentWeather";
 import styled from "styled-components";
 import { ExtendedForecastComponent } from "@/components/extendedforecast/ExtendedForecast";
+import { fetchCurrentWeather } from "@/utils/functions/currentWeather/fetchCurrentWeather ";
+import { fetchForecastWeather } from "@/utils/functions/forecastWeather/fetchForecastWeather";
 
 const WeatherPage = () => {
-  const { data: currentWeather, isFetching } = useQuery<CurrentWeatherData>(
+  const { data: currentWeatherData, isError } = useQuery<CurrentWeatherData>(
     "currentWeather",
     () => fetchCurrentWeather("Paris")
   );
-  const { data: extendedForecast, isFetched } = useQuery<ForecastWeatherData[]>(
+
+  const { data: forecastWeatherData } = useQuery<ForecastWeatherData[]>(
     "forecastWeather",
     () => fetchForecastWeather("Paris")
   );
 
-  if (isFetching) return <div>LOADING</div>;
+  if (!currentWeatherData || !forecastWeatherData) return <div>Error</div>;
 
-  if (!isFetching && isFetched) {
-    return (
-      <Wrapper>
-        <CurrentWeatherComponent data={currentWeather!} />
-        <ExtendedForecastComponent data={extendedForecast!} />
-      </Wrapper>
-    );
-  }
+  return (
+    <Wrapper>
+      <CurrentWeatherComponent data={currentWeatherData} />
+      <ExtendedForecastComponent data={forecastWeatherData} />
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`
   max-width: 77.5rem;
   margin: auto;
 `;
+
+export const getServerSideProps = async () => {
+  const queryClient = new QueryClient();
+  const query: string = "Paris";
+
+  await queryClient.prefetchQuery<CurrentWeatherData>(
+    "currentWeather",
+    async () => await fetchCurrentWeather(query)
+  );
+
+  await queryClient.prefetchQuery<ForecastWeatherData[]>(
+    "forecastWeather",
+    async () => await fetchForecastWeather(query)
+  );
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+};
 
 export default WeatherPage;

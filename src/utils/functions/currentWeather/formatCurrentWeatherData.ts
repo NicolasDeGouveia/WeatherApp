@@ -1,7 +1,7 @@
 import { CurrentWeatherData } from "@/types/weather";
 
 export const formatCurrentWeatherData = (data: any): CurrentWeatherData => {
-    const currentDate = new Date(data.dt * 1000); // Convert UNIX timestamp to milliseconds
+    const currentDate = new Date(data.dt * 1000);
 
     return {
         name: data.name,

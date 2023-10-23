@@ -8,16 +8,23 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [queryClient] = React.useState(() => new QueryClient());
+  const [queryClient] = React.useState(
+    new QueryClient({
+      defaultOptions: {
+        queries: { refetchOnWindowFocus: false, suspense: false, retry: false },
+      },
+    })
+  );
+  console.log(pageProps.dehydratedState);
 
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <ReactQueryDevtools />
+        <main className={inter.className}>
+          <Component {...pageProps} />
+        </main>
       </Hydrate>
-      <main className={inter.className}>
-        <Component {...pageProps} />
-      </main>
     </QueryClientProvider>
   );
 }
