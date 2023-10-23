@@ -1,40 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather App
 
-## Getting Started
+Il s'agit d'une application web conçue pour voir la météo du jour ainsi que des cinq prochains jours.
 
-First, run the development server:
+## Prérequis
+
+Avant de commencer, assurez-vous d'avoir les prérequis suivants installés sur votre machine :
+
+- Node.js version 18.X ou supérieure. Node.js est une plateforme logicielle qui vous permet d'exécuter du code JavaScript sur votre machine. Vous pouvez télécharger Node.js à partir de [ici](https://nodejs.org/en/download/).
+- Git, un système de contrôle de version. Git est un outil essentiel pour tout développeur, permettant de suivre les modifications apportées au code et de collaborer avec d'autres développeurs. Vous pouvez le télécharger à partir de [ici](https://git-scm.com/downloads).
+
+
+## Commencer
+
+> **Note**
+> Assure-vous d'avoir un compte OpenWeatherMap afin de récupérer votre clé API.
+
+
+
+Suivez ces étapes pour installer et exécuter le projet sur votre machine locale :
+
+### 1. Cloner le dépôt
+
+Ouvrez un terminal et exécutez la commande suivante pour cloner le dépôt :
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/NicolasDeGouveia/WeatherApp
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Accéder au répertoire du projet
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Naviguez vers le répertoire du projet en utilisant la commande suivante :
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+cd weatherapp
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### 3. Installer les dépendances
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Installez toutes les dépendances nécessaires en utilisant la commande suivante :
 
-## Learn More
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Créer le fichier .env.local
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Assurez-vous que vous êtes dans le répertoire du projet (`weatherapp`) et créez un fichier `.env.local` à la racine du projet.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 5. Ajouter la clé API au fichier .env.local
 
-## Deploy on Vercel
+Ajoutez la clé API d'OpenWeatherMap au fichier `.env.local` :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```plaintext
+API_KEY='YOUR_API_KEY'
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Remplacez 'YOUR_API_KEY' par votre clé API.
+```
+
+
+### 6. Exécuter l'application
+
+ Dans un terminal, exécutez l'application en utilisant la commande suivante :
+
+```bash
+npm run build
+npm run start
+```
+
+### 7. Accéder à l'application
+
+Ouvrez votre navigateur web et accédez à [http://localhost:3000](http://localhost:3000) pour voir le résultat.
